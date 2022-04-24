@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-# Python program to convert openflow dump from JSON file to CSV
+# program to convert openflow dump from JSON file to CSV
 #
 # usage:
 # step1: flozer --json < flows_dump.txt > flows.json
-# step2: zjson2csv < data.json
+# step2: zjson2csv < flows.json
 
 
 import json
@@ -24,6 +24,7 @@ csv_writer = csv.writer(output_file)
 headers = [
 	'cookie',
 	'table',
+	'n_packets',
 	'priority',
 	'matches',
 	'matches-protocol',
@@ -65,6 +66,7 @@ for input_row in input_data:
 	output_row = [
 		input_row['cookie'],
 		input_row['table'],
+		input_row['n_packets'],
 		input_row['priority'],
 		matches,
 		matches_protocol,
